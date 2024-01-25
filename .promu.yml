@@ -1,0 +1,18 @@
+---
+go:
+    # Whenever the Go version is updated here, .circle/config.yml should also
+    # be updated.
+    version: 1.21
+repository:
+    path: github.com/currycan/ops-exporter
+build:
+    ldflags: |
+        -X github.com/currycan/ops-exporter/version.Version={{.Version}}
+        -X github.com/currycan/ops-exporter/version.Revision={{.Revision}}
+        -X github.com/currycan/ops-exporter/version.Branch={{.Branch}}
+        -X github.com/currycan/ops-exporter/version.BuildUser={{user}}@{{host}}
+        -X github.com/currycan/ops-exporter/version.BuildDate={{date "20060102-15:04:05"}}
+tarball:
+    files:
+        - LICENSE
+        - NOTICE
