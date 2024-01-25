@@ -24,14 +24,14 @@ import (
 var (
 	httpCnt = promauto.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "ops-exporter_http_requests_total",
+			Name: "ops_exporter_http_requests_total",
 			Help: "Total HTTP requests processed by the ops-exporter, excluding scrapes.",
 		},
 		[]string{"handler", "code", "method"},
 	)
 	httpPushSize = promauto.NewSummaryVec(
 		prometheus.SummaryOpts{
-			Name:       "ops-exporter_http_push_size_bytes",
+			Name:       "ops_exporter_http_push_size_bytes",
 			Help:       "HTTP request size for pushes to the ops-exporter.",
 			Objectives: map[float64]float64{0.1: 0.01, 0.5: 0.05, 0.9: 0.01},
 		},
@@ -39,7 +39,7 @@ var (
 	)
 	httpPushDuration = promauto.NewSummaryVec(
 		prometheus.SummaryOpts{
-			Name:       "ops-exporter_http_push_duration_seconds",
+			Name:       "ops_exporter_http_push_duration_seconds",
 			Help:       "HTTP request duration for pushes to the ops-exporter.",
 			Objectives: map[float64]float64{0.1: 0.01, 0.5: 0.05, 0.9: 0.01},
 		},

@@ -50,7 +50,7 @@ import (
 )
 
 func init() {
-	prometheus.MustRegister(version.NewCollector("ops-exporter"))
+	prometheus.MustRegister(version.NewCollector("ops_exporter"))
 }
 
 // logFunc in an adaptor to plug gokit logging into promhttp.HandlerOpts.
@@ -63,7 +63,7 @@ func (lf logFunc) Println(v ...interface{}) {
 func main() {
 	var (
 		app                 = kingpin.New(filepath.Base(os.Args[0]), "The ops-exporter")
-		webConfig           = webflag.AddFlags(app, ":9091")
+		webConfig           = webflag.AddFlags(app, ":8888")
 		metricsPath         = app.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
 		externalURL         = app.Flag("web.external-url", "The URL under which the ops-exporter is externally reachable.").Default("").URL()
 		routePrefix         = app.Flag("web.route-prefix", "Prefix for the internal routes of web endpoints. Defaults to the path of --web.external-url.").Default("").String()
